@@ -9,7 +9,7 @@ export default class App extends React.Component<Props, State>{
   render(){
     return(
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your application.</Text>
+        <Text>Open up App.tsx to start working on your application.</Text>
       </View>
     );
   }

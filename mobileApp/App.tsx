@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Landing from './src/modules/auth/Landing/Landing'
 
 interface Props {}
 interface State {}
@@ -9,7 +10,7 @@ export default class App extends React.Component<Props, State>{
   render(){
     return(
       <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your application.</Text>
+        <Landing/>
       </View>
     );
   }
@@ -18,8 +19,6 @@ export default class App extends React.Component<Props, State>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+   
   },
 });

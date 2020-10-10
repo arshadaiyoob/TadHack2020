@@ -11,7 +11,7 @@ let options = {
    
   let geoCoder = nodeGeocoder(options);
 
-
+//  Fetch Country based Data
 const fetchData = async (country) =>{
     let changeableUrl =url;
 
@@ -46,6 +46,7 @@ console.log(error);
 }
 }
 
+//  Fetch Global Covid data
 const fetchGlobalData = async () =>{
 try{
     const {data:{confirmed,deaths,lastUpdate,recovered}}= await axios.get(url);
@@ -68,30 +69,10 @@ try{
 catch(error){
 console.log(error);
 }
-}
-
-// const fetchtest = async () =>{
-//     try{
-//         const data= await axios.get("https://www.hpb.health.gov.lk/api/get-current-statistical");
-//         let obj=data.data.data;
-//         let newObj={
-//             "Local Deaths":obj['local_deaths'],
-//             "Local Recovered":obj.local_recovered
-//         }
-//         console.log(JSON.stringify(newObj))
-//         //let death=data['local_deaths'];
-//        // console.log(death);
-//         //console.log({data:{data:local_total_cases}});
-//         return newObj;
-//     }
-    
-//     catch(error){
-//     console.log(error);
-//     }
-//     }
 
 
 
+// Fetch Covid News
 const fetchCovidNews = async () =>{
     let today = new Date().toISOString().slice(0, 10);
     var Url =
@@ -101,6 +82,7 @@ const fetchCovidNews = async () =>{
       `${today}&` +
       "apiKey=4c73c5f5fb284b3e8c5d75bcd2674dbf&"
       +"language=en";
+
 
 try{
     console.log("shaaki");
@@ -115,7 +97,7 @@ console.log(error);
 }
 
 
-
+// Fetch PCR Details
 const fetchPCRLocations = async () =>{
     let URL="https://www.hpb.health.gov.lk/api/get-current-statistical";
     try{
@@ -129,7 +111,10 @@ const fetchPCRLocations = async () =>{
     }
     
 
-
+/**
+ * POST /covid/covidPCRLocations
+ * Purpose: Get PCR Locations
+ */
 router.get('/covidPCRLocations', async (req, res) =>{
     let body = req.body;
     let hospital_datas = await fetchPCRLocations();
@@ -138,12 +123,28 @@ router.get('/covidPCRLocations', async (req, res) =>{
     
 })
 
+
+/**
+ * POST /covid/covidCountry
+ * Purpose: Country based covid details
+ */
+router.post('/covidCountry', async (req, res) =>{
+    let body = req.params.country;
+    let data = await fetchData("India");
+    console.log(data);
+    res.status(200).send({data})  
+
 router.post('/covidCountry/:location', async (req, res) =>{
     let body = req.params.location;
     let data = await fetchData(body);
     res.status(200).send(data)  
+
 })
 
+/**
+ * POST /covid/covidGlobal
+ * Purpose: Global based covid details
+ */
 router.get('/covidGlobal', async (req, res) =>{
     let body = req.body;
     let data = await fetchGlobalData();
@@ -152,6 +153,10 @@ router.get('/covidGlobal', async (req, res) =>{
     
 })
 
+/**
+ * POST /covid/covidNewsFeeds
+ * Purpose: Covid-19 News Feeds
+ */
 router.get('/covidNewsFeeds', async (req, res) =>{
     let body = req.body;
     let articles = await fetchCovidNews();
@@ -160,7 +165,13 @@ router.get('/covidNewsFeeds', async (req, res) =>{
     
 })
 
+
+/**
+ * POST /covid/covidLocation/:location
+ * Purpose: Get Geo Cording
+ */
 router.post('/covidPCRLocation/:location', async (req, res) =>{
+
     let body = req.params.location;
     console.log(body)
     geoCoder.geocode(body)
@@ -174,4 +185,5 @@ router.post('/covidPCRLocation/:location', async (req, res) =>{
    
     
 })
+
 module.exports=router;

@@ -1,9 +1,11 @@
 
 import logoImage from '../../../../assets/logo.png';
 import React,{useEffect} from 'react';
-import { Text, View,StatusBar,Image,Animated } from 'react-native';
+import { Text, View,StatusBar,Image,Animated, TouchableOpacity } from 'react-native';
 import Button from '../../../component/Button/Button'
 import styles from './Landing.styles';
+import PhoneInput from 'react-native-phone-number-input';
+import color from '../../../styles/color';
 
 
 interface Props {}
@@ -19,7 +21,8 @@ const Landing =()=>{
             fadeAnim,
             {
               toValue:1,
-              duration:1000
+              duration:1000,
+              useNativeDriver:false
             }).start();
             
     },[fadeAnim])
@@ -44,7 +47,21 @@ const Landing =()=>{
               outputRange: [250, 0]  // 0 : 150, 0.5 : 75, 1 : 0
             }),
           }]}]}>
-        <Text style={styles.text}>Stay home, save lives</Text>
+        <Text style={styles.text}>WELCOME,</Text>
+        <View style={styles.mobileStyle}>
+                  <Text style={styles.mobileText}>MOBILE</Text>
+                  <TouchableOpacity onPress={()=>{
+                    console.log('pressed')
+                  }}>
+                       <PhoneInput
+            defaultCode="US"
+            withDarkTheme
+            placeholder='Enter your mobile #'
+            textContainerStyle={styles.textContainerStyle}
+            disabled={true} 
+          /></TouchableOpacity>
+             
+                </View>
     </Animated.View>
 
       </View>

@@ -14,7 +14,7 @@ interface UserProfileComponentProps {
   const UserProfile: React.FC<UserProfileComponentProps> = ({
   user,
   name,
-    onPress,
+  onPress,
   }) => {
     console.log(user);
     return (

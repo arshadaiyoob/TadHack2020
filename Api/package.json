@@ -16,6 +16,8 @@
     "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "ideamart.js": "^0.3.1",
+    "localStorage": "^1.0.4",
     "lodash": "^4.17.20",
     "mongoose": "^5.10.8"
   }

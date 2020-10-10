@@ -3,7 +3,6 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import CreateAccount from './src/modules/auth/CreateAccount/CreateAccount';
 import Landing from './src/modules/auth/Landing/Landing'
-import PhoneNumber from './src/modules/auth/PhoneNumber/PhoneNumber';
 import CountryTextField from './src/component/CountryTextField/CountryTextField'
 import Password from './src/modules/auth/Password/Password';
 import CodeVerification from './src/modules/auth/CodeVerfication/CodeVerfication'
@@ -18,6 +17,7 @@ import Map from './src/modules/dashboards/Map';
 import Home from './src/modules/dashboards/Home/Home'
 import News from './src/modules/dashboards/News/News';
 import Stats from './src/modules/dashboards/Stats/Stats';
+import Pcr from './src/modules/PCR/Pcr';
 
 
 interface Props {}
@@ -27,7 +27,7 @@ export default class App extends React.Component<Props, State>{
   render(){
     return(
       <View style={styles.container}>
-        <PhoneNumber/>
+        <Pcr/>
       </View>
     );
   }

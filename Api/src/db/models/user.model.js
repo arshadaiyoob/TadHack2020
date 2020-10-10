@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const _ = require('lodash');
 const dotenv = require('dotenv');
-const crypto = require('crypto');
+const lStorage = require('localStorage');
 const bcrypt = require('bcrypt');
 
 dotenv.config();
@@ -84,6 +84,24 @@ UserSchema.statics.findByCredentials = function(phone, password){
     });
 }
 
+UserSchema.statics.genOTP = function (phone){
+    return new Promise((resolve, reject) =>{
+        let code = Math.floor(100000 + Math.random() * 900000);
+        lStorage.setItem(code, phone)
+        return resolve(code);
+    });
+}
+
+UserSchema.statics.verifyOTP = function(value) {
+    let code = lStorage.getItem(value);
+    if (code != null){
+        lStorage.removeItem(value);
+        return code;
+    } else {
+        return false;
+    }
+
+}
 const User = mongoose.model('User', UserSchema);
 module.exports = {User};
 

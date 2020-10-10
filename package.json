@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "expo": "^39.0.3",
     "expo-cli": "^3.27.14",
     "global": "^4.4.0"
   }

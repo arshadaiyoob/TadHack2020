@@ -21,7 +21,7 @@ export default class App extends React.Component<Props, State>{
   render(){
     return(
       <View style={styles.container}>
-         <GettingStarted/>
+         <Landing/>
       </View>
     );
   }

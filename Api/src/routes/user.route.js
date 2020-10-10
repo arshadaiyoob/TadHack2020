@@ -1,18 +1,10 @@
+
 const router = require('express').Router();
 const { User } = require('../db/models');
+const api = require('../api/sms');
 
 
-router.post('/validateOTP', async (req, res) =>{
-    let body = req.body;
- 
-})
-
-router.get('/generateOTP', async (req, res) =>{
-    let body = req.body;
-    let OTP=Math.floor(100000 + Math.random() * 900000);
-    res.status(200).send({OTP});
-})
-
+const sms = new api();
 
 router.post('/register', async (req, res) =>{
     let body = req.body;
@@ -24,9 +16,23 @@ router.post('/register', async (req, res) =>{
     
     newUser.save()
     .then(() =>{
+        sms.sendOTP(body.phone)
         return res.status(200).send(newUser);
     })
 })
+
+router.post('/OTP', async(req,res) => {
+    let otp = req.body.otp;
+    let verify = await User.verifyOTP(otp);
+    if(verify == req.body.phone){
+        // sending a success status
+        res.status(200).send({status: "success"})
+    }
+    else if(verify == false){
+        //OTP is not valid 
+        res.status(401).send("OTP Invalid!")
+    }
+});
 
 router.post('/login', async(req, res) =>{
     let phone = req.body.phone;

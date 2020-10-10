@@ -1,5 +1,7 @@
 // import EStyleSheet from 'react-native-extended-stylesheet';
 import { StyleSheet} from 'react-native';
+import colors from '../../../styles/color';
+import { FontFamilySemiBold } from '../../../styles/fonts';
 
 const styles= StyleSheet.create({
     container: {
@@ -30,7 +32,23 @@ const styles= StyleSheet.create({
     text:{
         margin:'10%',
         fontSize:20
-    }  
+    }  ,
+    textContainerStyle:{
+        backgroundColor:'transparent',
+    borderBottomColor:colors.font.lightText,
+    borderBottomWidth:1,
+    },
+    mobileStyle:{
+        margin:30,
+        marginTop:-5
+    },
+    mobileText:{
+        ...FontFamilySemiBold,
+        fontSize: 14,
+        color: colors.font.lightText,
+        fontWeight:'600'
+    }
+    
     
 }
 )

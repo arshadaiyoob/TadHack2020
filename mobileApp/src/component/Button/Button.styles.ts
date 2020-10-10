@@ -8,7 +8,7 @@ const style = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: colors.backgrounds.primaryRed,
     paddingVertical: 25,
-    height: '160rem',
+    height: 10,
   },
 
   buttonStyle: {},

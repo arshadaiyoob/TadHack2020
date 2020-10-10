@@ -24,9 +24,11 @@ router.post('/OTP', async(req,res) => {
     let otp = req.body.otp;
     let verify = await User.verifyOTP(otp);
     if(verify == req.body.phone){
+        // sending a success status
         res.status(200).send({status: "success"})
     }
     else if(verify == false){
+        //OTP is not valid 
         res.status(401).send("OTP Invalid!")
     }
 });

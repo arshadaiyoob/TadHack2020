@@ -2,7 +2,9 @@
 import React from 'react';
 import { Text, View,StatusBar,Image,Animated, TouchableOpacity, KeyboardAvoidingView,
   Platform,ScrollView } from 'react-native';
-import BottomNavigator from '../BottomNavigator';
+import BottomTabNavigator from '../BottomNavigator';
+// import BottomTabNavigator from '../../navigation/TabNavigator';
+
 import styles from './Home.styles';
 
 
@@ -24,7 +26,7 @@ const Home =()=>{
          <View style={{flex:8}}>
 
          </View>
-       <BottomNavigator isHome/>
+       {/* <BottomTabNavigator isHome/> */}
      </View>
     );
   

@@ -10,7 +10,7 @@ import CodeInputField from '../../../component/CodeInputField/CodeInputField';
 import {Button} from 'react-native-elements';
 
 
-const PhoneNumber =()=>{
+const PhoneNumber =(props)=>{
    const fadeAnim=new Animated.Value(0);
    const handleOnFulfill = (code: string): void => {
    
@@ -65,7 +65,7 @@ const PhoneNumber =()=>{
                   
               </View>
               <View style={styles.btnContainer}>
-        <Button title="CONTINUE"  buttonStyle={styles.buttonStyle}/></View> 
+        <Button title="CONTINUE" onPress={()=>{props.navigation.navigate("CreateAccount")}} buttonStyle={styles.buttonStyle}/></View> 
               </ScrollView>
          
         </KeyboardAvoidingView>

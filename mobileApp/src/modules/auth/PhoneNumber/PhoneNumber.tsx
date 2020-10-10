@@ -8,7 +8,7 @@ import TextField from '../../../component/Textfield/TextField';
 import PhoneInput from 'react-native-phone-number-input';
 import {Button} from 'react-native-elements';
 
-const PhoneNumber =()=>{
+const PhoneNumber =(props)=>{
    const fadeAnim=new Animated.Value(0);
 
   
@@ -60,7 +60,7 @@ const PhoneNumber =()=>{
           />
                 </View>
                 <View style={styles.btnContainer}>
-        <Button title="NEXT"  buttonStyle={styles.buttonStyle}/></View> 
+        <Button title="NEXT" onPress={() =>{props.navigation.navigate("CodeVerification")}} buttonStyle={styles.buttonStyle}/></View> 
               </ScrollView>
          
         </KeyboardAvoidingView>

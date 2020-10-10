@@ -1,7 +1,8 @@
 import React from 'react';
 import MapView from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
-import BottomNavigator from './BottomNavigator';
+import BottomNavigator from '../BottomNavigator';
+// import BottomNavigator from '../../navigation/TabNavigator';
 
 export default class MapComponent extends React.Component {
   render() {

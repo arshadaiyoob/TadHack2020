@@ -12,7 +12,7 @@ import {Button} from 'react-native-elements'
 
 
 
-const CreateAccount =()=>{
+const CreateAccount =(props)=>{
    const fadeAnim=new Animated.Value(0);
    const [modalVisible, setModalVisible] = useState(false);
    const closeModal =()=>{
@@ -86,7 +86,7 @@ const CreateAccount =()=>{
           </View>
         </Modal> 
         <View style={styles.btnContainer}>
-        <Button title="CONTINUE"  buttonStyle={styles.buttonStyle}/></View> 
+        <Button title="CONTINUE" onPress={()=>{props.navigation.navigate("Home")}}  buttonStyle={styles.buttonStyle}/></View> 
               </ScrollView>
          
         </KeyboardAvoidingView>

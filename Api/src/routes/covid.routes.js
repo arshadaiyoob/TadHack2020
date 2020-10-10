@@ -158,17 +158,21 @@ router.get("/covidNewsFeeds", async (req, res) => {
  * POST /covid/covidLocation/:location
  * Purpose: Get Geo Cording
  */
-router.post("/covidPCRLocation/:location", async (req, res) => {
-  let body = req.params.location;
-  console.log(body);
-  geoCoder
-    .geocode(body)
-    .then((location) => {
-      res.status(200).send(location[0]);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+router.post('/covidPCRLocation/:location', async (req, res) =>{
 
-module.exports = router;
+    let body = req.params.location;
+    console.log(body)
+    geoCoder.geocode(body)
+  .then((location)=> {
+    res.status(200).send(location[1])  
+  })
+  .catch((err)=> {
+    console.log(err);
+  });
+
+   
+    
+})
+
+module.exports=router;
+

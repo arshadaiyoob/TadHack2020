@@ -3,9 +3,13 @@ const router = require('express').Router();
 const { User } = require('../db/models');
 const api = require('../api/sms');
 
-
+//  Initiating IdeaMart Pro API
 const sms = new api();
 
+/**
+ * POST /user/register
+ * Purpose: Register
+ */
 router.post('/register', async (req, res) =>{
     let body = req.body;
     //Checking User already exist
@@ -16,12 +20,26 @@ router.post('/register', async (req, res) =>{
     
     newUser.save()
     .then(() =>{
-        sms.sendOTP(body.phone)
         return res.status(200).send(newUser);
     })
 })
 
-router.post('/OTP', async(req,res) => {
+/**
+ * POST /user/OTPSend
+ * Purpose: Send OTP CODE
+ */
+router.post('/OTPSend', async(req,res) => {
+    if(req.body.otp != null){
+        sms.sendOTP(body.phone)
+        res.status(200).send({status: "success"})
+    }
+});
+
+/**
+ * POST /user/OTPVerify
+ * Purpose: Verify OTP CODE
+ */
+router.post('/OTPVerify', async(req,res) => {
     let otp = req.body.otp;
     let verify = await User.verifyOTP(otp);
     if(verify == req.body.phone){
@@ -34,6 +52,10 @@ router.post('/OTP', async(req,res) => {
     }
 });
 
+/**
+ * POST /user/login
+ * Purpose: Login
+ */
 router.post('/login', async(req, res) =>{
     let phone = req.body.phone;
     let password = req.body.password;

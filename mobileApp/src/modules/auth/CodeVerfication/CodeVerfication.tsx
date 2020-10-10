@@ -7,13 +7,23 @@ import TextField from '../../../component/Textfield/TextField';
 import PhoneInput from 'react-native-phone-number-input';
 import CodeInputField from '../../../component/CodeInputField/CodeInputField';
 import {Button} from 'react-native-elements';
-import { validateOTP } from '../../../services/userapi';
+// import { validateOTP } from '../../../services/userapi';
 
-const CodeVerification =()=>{
+const CodeVerification =(props)=>{
    const fadeAnim=new Animated.Value(0);
    const handleOnFulfill = (code: string): void => {
-     validateOTP(code);
+    //  validateOTP(code);
      
+     let obj = {
+      phone: phoneNo,
+      otp:code
+    }
+    await axios.post(BASE_URL +SUB_URL+ "validateOTP",obj).then(res => {
+      if (res.status === 200) {
+        // props.navigation.navigate("");
+        // return data;
+      }
+     }).catch(err => { return err.data; })
   };
   const [value, setValue] = useState("");
 

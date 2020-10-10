@@ -8,6 +8,7 @@ import styles from './News.styles';
 import axios from 'axios';
 import { BASE_URL } from '../../../../config';
 import { Map } from 'react-leaflet';
+import { ActivityIndicator } from '@ant-design/react-native';
 const SUB_URL = "covid/"
 
 const News =()=>{
@@ -33,7 +34,7 @@ const News =()=>{
          {
            globalData? globalData.map(data => {
              return <NewsCard user={ data}/>
-          }):<Text>No Data</Text>
+          }):<ActivityIndicator/>
          }
        
          </ScrollView>

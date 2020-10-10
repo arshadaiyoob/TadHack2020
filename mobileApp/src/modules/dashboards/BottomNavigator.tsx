@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Animated, Text, Alert } from 'react-native';
-import phone from '../../../assets/phone.png';
+import { MainStackNavigator, NewsStackNavigator, StatsStackNavigator,MapStackNavigator } from './StackNavigator'
+
+import phone from '../../../assets/phone.png'
 import home from '../../../assets/home.png';
 import map from '../../../assets/map.png';
 import stats from '../../../assets/stats.png';
@@ -60,7 +62,7 @@ const BottomNavigator: React.FC<customProps> = props =>{
 
                     }}>
                         <TouchableOpacity>
-                            <Image style={{ width: 30, height: 30, tintColor: isHome? 'black':'' }} source={home}></Image>
+                            <Image style={{ width: 30, height: 30, tintColor: isHome? 'black':'gray' }} source={home}></Image>
                         </TouchableOpacity>
                     </View>
                     <View style={{
@@ -70,7 +72,7 @@ const BottomNavigator: React.FC<customProps> = props =>{
 
                     }}>
                         <TouchableOpacity>
-                            <Image style={{ width: 30, height: 30 ,tintColor: isNews? 'black':''}} source={news}></Image>
+                            <Image style={{ width: 30, height: 30 ,tintColor: isNews? 'black':'gray'}} source={news}></Image>
                         </TouchableOpacity>
                     </View>
                     <View style={{
@@ -80,7 +82,7 @@ const BottomNavigator: React.FC<customProps> = props =>{
 
                     }}>
                         <TouchableOpacity>
-                            <Image style={{ width: 30, height: 30,tintColor: isStats? 'black':'' }} source={stats}></Image>
+                            <Image style={{ width: 30, height: 30,tintColor: isStats? 'black':'gray' }} source={stats}></Image>
                         </TouchableOpacity>
                     </View>
                     <View style={{
@@ -90,7 +92,7 @@ const BottomNavigator: React.FC<customProps> = props =>{
 
                     }}>
                         <TouchableOpacity>
-                            <Image style={{ width: 30, height: 30,tintColor: isMap? 'black':'' }} source={map}></Image>
+                            <Image style={{ width: 30, height: 30,tintColor: isMap? 'black':'gray' }} source={map}></Image>
                         </TouchableOpacity>
                     </View>
                 </View>

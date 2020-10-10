@@ -9,7 +9,9 @@ import CodeInputField from '../../../component/CodeInputField/CodeInputField';
 import {Button} from 'react-native-elements';
 // import { validateOTP } from '../../../services/userapi';
 
+
 const CodeVerification =(props)=>{
+
    const fadeAnim=new Animated.Value(0);
    const handleOnFulfill = (code: string): void => {
     //  validateOTP(code);
@@ -76,7 +78,7 @@ const CodeVerification =(props)=>{
                   
               </View>
               <View style={styles.btnContainer}>
-        <Button title="CONTINUE"  buttonStyle={styles.buttonStyle}/></View> 
+        <Button title="CONTINUE" onPress={()=>{props.navigation.navigate("CreateAccount")}} buttonStyle={styles.buttonStyle}/></View> 
               </ScrollView>
          
         </KeyboardAvoidingView>

@@ -10,6 +10,7 @@ import quarantine from '../../../../assets/quarantine.png';
 import deaths from '../../../../assets/deaths.png';
 import recovered from '../../../../assets/recovered.png';
 import covid from '../../../../assets/covid.png';
+
 import styles from './Home.styles';
 import axios from 'axios';
 import { BASE_URL } from '../../../../config';
@@ -102,10 +103,9 @@ const Home = () => {
         </View>
       
       </View>
-      <BottomNavigator isHome />
+    
     </View>
   );
-
 };
 
 export default Home;

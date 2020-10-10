@@ -12,11 +12,8 @@ import { Button } from 'react-native-elements';
 import { generateOTP } from '../../../services/userapi';
 
 let phoneNumberInput = "";
-
-const PhoneNumber = () => {
-
-  const fadeAnim = new Animated.Value(0);
-
+const PhoneNumber =(props)=>{
+   const fadeAnim=new Animated.Value(0);
   const [value, setValue] = useState("");
   const [formattedValue, setFormattedValue] = useState("");
 
@@ -41,7 +38,6 @@ const PhoneNumber = () => {
       <TouchableOpacity>
       <Image source={ arrow } style = { styles.imageStyle } />
         </TouchableOpacity>
-
         <Text style = { styles.topText }> WELCOME </Text>
           <View/>
           </View>
@@ -72,8 +68,7 @@ const PhoneNumber = () => {
   onChangeText = {(text) => {
   // setValue(text);
   phoneNumberInput = text;
-
-}}
+  }}
 onChangeFormattedText = {(text) => {
   // setFormattedValue(text);
   console.log(text)
@@ -87,7 +82,6 @@ onChangeFormattedText = {(text) => {
 
       </KeyboardAvoidingView>
       </Animated.View>
-
       </View>
     );
   

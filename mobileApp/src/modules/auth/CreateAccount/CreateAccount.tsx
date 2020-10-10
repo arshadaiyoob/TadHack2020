@@ -13,7 +13,7 @@ import Password from '../Password/Password';
 
 import { createAccount } from '../../../services/userapi';
 
-const CreateAccount =()=>{
+const CreateAccount =(props)=>{
    const fadeAnim=new Animated.Value(0);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -99,7 +99,7 @@ placeholder = "Enter password"  secureTextEntry />
           </View>
         </Modal> 
         <View style={styles.btnContainer}>
-        <Button title="CONTINUE" onPress={()=>createAccountMethod(firstname,lastname,password)} buttonStyle={styles.buttonStyle}/></View> 
+        <Button title="CONTINUE" onPress={()=>{props.navigation.navigate("Home")}}  buttonStyle={styles.buttonStyle}/></View>
               </ScrollView>
          
         </KeyboardAvoidingView>

@@ -25,6 +25,7 @@ const News =()=>{
   });
     return(
      <View style={styles.container}>
+
        <View style={styles.innerContainer}>
          <View style={styles.headerContainer}>
          <Text style={{fontSize:26,marginLeft:30}}>NEWS FEED</Text>
@@ -42,8 +43,6 @@ const News =()=>{
        
 
        </View>
-      <View><BottomNavigator isNews/></View>
-      
      </View>
     );
   

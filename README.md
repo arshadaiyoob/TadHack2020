@@ -10,5 +10,4 @@
 >  ```npm install (in both folders)```
 
 
-> ```npm start or expo start (to run the project)
-```
+> ```npm start or expo start (to run the project)```

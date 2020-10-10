@@ -1,11 +1,5 @@
 
 import React from 'react';
-<<<<<<< HEAD
-import { Text, View,StatusBar,Image,Animated, TouchableOpacity, KeyboardAvoidingView,
-  Platform,ScrollView } from 'react-native';
-import BottomTabNavigator from '../BottomNavigator';
-// import BottomTabNavigator from '../../navigation/TabNavigator';
-=======
 import {
   Text, View, StatusBar, Image, Animated, TouchableOpacity, KeyboardAvoidingView,
   Platform, ScrollView
@@ -17,8 +11,6 @@ import deaths from '../../../../assets/deaths.png';
 import recovered from '../../../../assets/recovered.png';
 import covid from '../../../../assets/covid.png';
 
-
->>>>>>> 671b24f6bcf1a5261015dedc7ab900fa00644150
 
 import styles from './Home.styles';
 
@@ -36,26 +28,6 @@ const Home = () => {
 
           <Text style={{  fontSize: 24, color: 'white',fontWeight:'700',marginLeft:10 }}>COVID ZERO</Text></View>
    
-<<<<<<< HEAD
-    return(
-     <View style={styles.container}>
-         <View style={{flex:4,backgroundColor:'#ba4343',borderBottomRightRadius:250,borderBottomLeftRadius:250}}>
-<View style={{flex:1,flexDirection:'row',alignContent:'center',justifyContent:'center',paddingTop:150,}}>
-  <View style={{backgroundColor:'white',width:180,shadowColor:'grey',shadowOpacity:0.5,borderTopLeftRadius:8,borderBottomLeftRadius:8}}>
-  </View>
-  <View style={{backgroundColor:'white',width:180,shadowColor:'grey',shadowOpacity:0.5,borderTopRightRadius:8,borderBottomRightRadius:8,borderLeftWidth:2,borderColor:'#adadad'}}>
-
-  </View>
-</View>
-         </View>
-         <View style={{flex:8}}>
-
-         </View>
-       {/* <BottomTabNavigator isHome/> */}
-     </View>
-    );
-  
-=======
       <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:-50}}><Text style={{ fontSize: 18, color: 'white' }}>Worldwide today</Text>
       <Text style={{ fontSize: 18, color: 'white' }}>date</Text></View>
         
@@ -109,11 +81,9 @@ const Home = () => {
         </View>
       
       </View>
-      <BottomNavigator isHome />
+    
     </View>
   );
-
->>>>>>> 671b24f6bcf1a5261015dedc7ab900fa00644150
 };
 
 export default Home;

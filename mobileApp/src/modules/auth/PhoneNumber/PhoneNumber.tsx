@@ -11,15 +11,11 @@ import PhoneInput from 'react-native-phone-number-input';
 import { Button } from 'react-native-elements';
 import { generateOTP } from '../../../services/userapi';
 
-<<<<<<< HEAD
+
+let phoneNumberInput = "";
 const PhoneNumber =(props)=>{
    const fadeAnim=new Animated.Value(0);
-=======
-let phoneNumberInput = "";
-const PhoneNumber = () => {
->>>>>>> 671b24f6bcf1a5261015dedc7ab900fa00644150
 
-  const fadeAnim = new Animated.Value(0);
 
   const [value, setValue] = useState("");
   const [formattedValue, setFormattedValue] = useState("");
@@ -38,47 +34,6 @@ const PhoneNumber = () => {
     <View style= { styles.container } >
     <StatusBar
         translucent
-<<<<<<< HEAD
-        backgroundColor="transparent"
-        barStyle="dark-content"
-      />
-    <View style={styles.innerContainer}>
-      <TouchableOpacity >
-      <Image source={arrow} style={styles.imageStyle}/>
-      </TouchableOpacity>
-     
-    <Text style={styles.topText}>WELCOME</Text>
-    <View/>
-    </View>
-    <Animated.View style={[styles.bottomContainer,{ transform: [{
-            translateY: fadeAnim.interpolate({
-              inputRange: [0, 1],
-              outputRange: [650, 0]  
-            }),
-          }]}]}>
-                  <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        style={styles.bottomContainer}>
-          <ScrollView
-              style={styles.keyboardAwareContentContainer}
-              showsVerticalScrollIndicator={false}>
-                <View style={styles.mobileStyle}>
-                  <Text style={styles.text}>MOBILE</Text>
-                <PhoneInput
-            defaultCode="US"
-            withDarkTheme
-            placeholder='Enter your mobile #'
-            textContainerStyle={styles.textContainerStyle}
-            
-          />
-                </View>
-                <View style={styles.btnContainer}>
-        <Button title="NEXT" onPress={() =>{props.navigation.navigate("CodeVerification")}} buttonStyle={styles.buttonStyle}/></View> 
-              </ScrollView>
-         
-        </KeyboardAvoidingView>
-    </Animated.View>
-=======
   backgroundColor = "transparent"
   barStyle = "dark-content"
     />
@@ -87,7 +42,7 @@ const PhoneNumber = () => {
       <Image source={ arrow } style = { styles.imageStyle } />
         </TouchableOpacity>
 
-        < Text style = { styles.topText } > WELCOME < /Text>
+        < Text style = { styles.topText } > WELCOME </Text>
           < View />
           </View>
           < Animated.View style = {
@@ -106,7 +61,7 @@ const PhoneNumber = () => {
               style={ styles.keyboardAwareContentContainer }
   showsVerticalScrollIndicator = { false} >
     <View style={ styles.mobileStyle }>
-      <Text style={ styles.text }> MOBILE < /Text>
+      <Text style={ styles.text }> MOBILE </Text>
 
         < PhoneInput
   defaultCode = "US"
@@ -117,26 +72,24 @@ const PhoneNumber = () => {
   onChangeText = {(text) => {
   // setValue(text);
   phoneNumberInput = text;
-
-}}
+  }}
 onChangeFormattedText = {(text) => {
   // setFormattedValue(text);
   console.log(text)
 
 }}
-
 />
-  < /View>
+  </View>
   < View style = { styles.btnContainer } >
     <Button title="NEXT" onPress = {()=> generateOTP(phoneNumberInput) } buttonStyle = { styles.buttonStyle } />
-      < /View> 
-      < /ScrollView>
+      </View> 
+      </ScrollView>
 
-      < /KeyboardAvoidingView>
-      < /Animated.View>
->>>>>>> 671b24f6bcf1a5261015dedc7ab900fa00644150
+      </KeyboardAvoidingView>
+      </Animated.View>
 
-      < /View>
+
+      </View>
     );
   
 };

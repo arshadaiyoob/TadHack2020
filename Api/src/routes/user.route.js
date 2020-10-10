@@ -1,6 +1,19 @@
 const router = require('express').Router();
 const { User } = require('../db/models');
 
+
+router.post('/validateOTP', async (req, res) =>{
+    let body = req.body;
+ 
+})
+
+router.get('/generateOTP', async (req, res) =>{
+    let body = req.body;
+    let OTP=Math.floor(100000 + Math.random() * 900000);
+    res.status(200).send({OTP});
+})
+
+
 router.post('/register', async (req, res) =>{
     let body = req.body;
     //Checking User already exist

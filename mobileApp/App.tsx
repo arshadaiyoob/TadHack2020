@@ -15,7 +15,7 @@ import GettingStarted from './src/modules/access/GettingStarted/GettingStarted';
 import Dashboard from './src/modules/dashboards/Dashboard';
 import BottomNavigator from './src/modules/dashboards/BottomNavigator';
 import Map from './src/modules/dashboards/Map';
-import Home from './src/modules/dashboards/Home/Home'
+import Home from './src/modules/dashboards/Home/Home';
 import News from './src/modules/dashboards/News/News';
 import Stats from './src/modules/dashboards/Stats/Stats';
 
@@ -26,9 +26,9 @@ interface State { }
 export default class App extends React.Component<Props, State>{
   render() {
     return (
-      <View style= { styles.container } >
-      <AccessList/>
-      < /View>
+      <View>
+      <Home/>
+      </View>
     );
   }
 }

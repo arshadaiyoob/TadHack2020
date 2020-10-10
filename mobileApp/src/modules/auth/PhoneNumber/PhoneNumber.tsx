@@ -42,10 +42,10 @@ const PhoneNumber = () => {
       <Image source={ arrow } style = { styles.imageStyle } />
         </TouchableOpacity>
 
-        < Text style = { styles.topText } > WELCOME < /Text>
-          < View />
+        <Text style = { styles.topText }> WELCOME </Text>
+          <View/>
           </View>
-          < Animated.View style = {
+          <Animated.View style = {
             [styles.bottomContainer, {
               transform: [{
                 translateY: fadeAnim.interpolate({
@@ -61,9 +61,9 @@ const PhoneNumber = () => {
               style={ styles.keyboardAwareContentContainer }
   showsVerticalScrollIndicator = { false} >
     <View style={ styles.mobileStyle }>
-      <Text style={ styles.text }> MOBILE < /Text>
+      <Text style={ styles.text }> MOBILE </Text>
 
-        < PhoneInput
+        <PhoneInput
   defaultCode = "US"
   withDarkTheme
   placeholder = 'Enter your mobile #'
@@ -78,19 +78,17 @@ onChangeFormattedText = {(text) => {
   // setFormattedValue(text);
   console.log(text)
 
-}}
-
-/>
-  < /View>
-  < View style = { styles.btnContainer } >
+}}/>
+  </View>
+  <View style = { styles.btnContainer } >
     <Button title="NEXT" onPress = {()=> validatePhoneNo(phoneNumberInput) } buttonStyle = { styles.buttonStyle } />
-      < /View> 
-      < /ScrollView>
+      </View> 
+      </ScrollView>
 
-      < /KeyboardAvoidingView>
-      < /Animated.View>
+      </KeyboardAvoidingView>
+      </Animated.View>
 
-      < /View>
+      </View>
     );
   
 };
@@ -101,9 +99,8 @@ validatePhoneNo = (phoneNo) => {
   //send props phone no
   //   this.props.navigation.navigate();
   // }
-  else {
+  // else {
     //put toast message here
-  }
+  // }
 }
 export default PhoneNumber;
-

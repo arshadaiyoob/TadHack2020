@@ -12,7 +12,7 @@ let createAccount = async(userData) => {
   }).catch(err => { })
 };
 
-let generateOTP = async (generateOTP) => {
+let generateOTP = async (phoneNumber) => {
   await axios.get(BASE_URL + SUB_URL+`generateOTP/${phoneNumber}`).then(res => {
     if (res.status === 200) {
       let data = res.data;

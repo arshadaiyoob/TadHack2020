@@ -99,7 +99,7 @@ placeholder = "Enter password"  secureTextEntry />
           </View>
         </Modal> 
         <View style={styles.btnContainer}>
-        <Button title="CONTINUE" onPress={()=>CreateAccount(firstname,lastname,password)} buttonStyle={styles.buttonStyle}/></View> 
+        <Button title="CONTINUE" onPress={()=>createAccountMethod(firstname,lastname,password)} buttonStyle={styles.buttonStyle}/></View> 
               </ScrollView>
          
         </KeyboardAvoidingView>

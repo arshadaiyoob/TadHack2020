@@ -165,7 +165,7 @@ router.post('/covidPCRLocation/:location', async (req, res) =>{
     console.log(body)
     geoCoder.geocode(body)
   .then((location)=> {
-    res.status(200).send(location[0])  
+    res.status(200).send(location[1])  
   })
   .catch((err)=> {
     console.log(err);

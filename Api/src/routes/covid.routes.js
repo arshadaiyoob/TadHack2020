@@ -114,10 +114,11 @@ router.get('/covidPCRLocations', async (req, res) =>{
     res.status(200).send({hospital_datas})  
     
 })
-router.post('/covidCountry/:country', async (req, res) =>{
-    let body = req.params.country;
+router.post('/covidCountry/:location', async (req, res) =>{
+    let body = req.params.location;
+    console.log(body);
     let data = await fetchData(body);
-    console.log(data);
+  
     res.status(200).send({data})  
 })
 
@@ -137,7 +138,7 @@ router.get('/covidNewsFeeds', async (req, res) =>{
     
 })
 
-router.post('/covidLocation/:location', async (req, res) =>{
+router.post('/covidPCRLocation/:location', async (req, res) =>{
     let body = req.params.location;
     console.log(body)
     geoCoder.geocode(body)

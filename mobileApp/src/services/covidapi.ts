@@ -2,6 +2,8 @@ import { BASE_URL } from '../../config';
 import axios from 'axios';
 const SUB_URL = "covid/"
 
+let globalData;
+
 let  getCovidDataByCountry = async (country) => {
   await axios.post(BASE_URL + SUB_URL+ `covidCountry/${country}`).then(res => {
     if (res.status === 200) {
@@ -16,8 +18,9 @@ let getCovidDataGlobal = async () => {
   await axios.get(BASE_URL +SUB_URL+ `covidGlobal`).then(res => { 
     if (res.status === 200) {
       let data = res.data;
-      console.log(data);
-      return data;
+      globalData = data;
+      // console.log(data,"ddd");
+      return globalData;
     }
   }).catch(err => { })
 }
@@ -36,4 +39,4 @@ let getCovidDataGlobal = async () => {
 //   })
 // }
 
-module.exports={getCovidDataByCountry,getCovidDataGlobal}
+module.exports={getCovidDataByCountry,getCovidDataGlobal,globalData}

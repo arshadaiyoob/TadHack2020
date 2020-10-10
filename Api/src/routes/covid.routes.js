@@ -83,7 +83,6 @@ const fetchCovidNews = async () => {
     "language=en";
 
   try {
-    console.log("shaaki");
     const data = await axios.get(Url);
     //console.log(data.data.articles);
     return data.data.articles;
@@ -121,6 +120,7 @@ router.get("/covidPCRLocations", async (req, res) => {
  */
 router.post("/covidLocation/:location", async (req, res) => {
   let body = req.params.location;
+  console.log(body)
   let data = await fetchData(body);
   res.status(200).send(data);
 });

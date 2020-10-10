@@ -24,17 +24,11 @@ interface Props { }
 interface State { }
 
 export default class App extends React.Component<Props, State>{
-<<<<<<< HEAD
-  render() {
-    return (
-      <View>
-      <Home/>
-=======
+
   render(){
     return(
       <View style={styles.container}>
-        <Pcr/>
->>>>>>> fe97c520491ccb6eef58763386335315464ec93f
+        <News/>
       </View>
     );
   }

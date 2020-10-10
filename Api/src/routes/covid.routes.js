@@ -106,27 +106,20 @@ const fetchPCRLocations = async () => {
 
 /**
  * POST /covid/covidPCRLocations
- * Purpose: Get PCR Locations
+ * Purpose: Get PCR Hospital Locations
  */
 router.get("/covidPCRLocations", async (req, res) => {
-  let body = req.body;
-  let hospital_datas = await fetchPCRLocations();
-  //  console.log(hospital_data);
-  res.status(200).send(hospital_datas);
-});
+    let body = req.body;
+    let hospital_datas = await fetchPCRLocations();
+    //  console.log(hospital_data);
+    res.status(200).send(hospital_datas);
+  });
 
 /**
- * POST /covid/covidCountry
- * Purpose: Country based covid details
+ * POST /covid/covidLocation/:location
+ * Purpose: Get Geo Cording
  */
-router.post("/covidCountry", async (req, res) => {
-  let body = req.params.country;
-  let data = await fetchData("India");
-  console.log(data);
-  res.status(200).send({ data });
-});
-
-router.post("/covidCountry/:location", async (req, res) => {
+router.post("/covidLocation/:location", async (req, res) => {
   let body = req.params.location;
   let data = await fetchData(body);
   res.status(200).send(data);
@@ -155,8 +148,8 @@ router.get("/covidNewsFeeds", async (req, res) => {
 });
 
 /**
- * POST /covid/covidLocation/:location
- * Purpose: Get Geo Cording
+ * POST /covidPCRLocation/:location
+ * Purpose: Get PCR Locations
  */
 router.post('/covidPCRLocation/:location', async (req, res) =>{
 

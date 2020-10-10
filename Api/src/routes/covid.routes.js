@@ -69,32 +69,8 @@ try{
 catch(error){
 console.log(error);
 }
-}
-
-<<<<<<< HEAD
-=======
-// const fetchtest = async () =>{
-//     try{
-//         const data= await axios.get("https://www.hpb.health.gov.lk/api/get-current-statistical");
-//         let obj=data.data.data;
-//         let newObj={
-//             "Local Deaths":obj['local_deaths'],
-//             "Local Recovered":obj.local_recovered
-//         }
-//         console.log(JSON.stringify(newObj))
-//         //let death=data['local_deaths'];
-//        // console.log(death);
-//         //console.log({data:{data:local_total_cases}});
-//         return newObj;
-//     }
-    
-//     catch(error){
-//     console.log(error);
-//     }
-//     }
 
 
->>>>>>> 6fae10467e5eec293a4f10bbbe702a4373eea9c1
 
 // Fetch Covid News
 const fetchCovidNews = async () =>{
@@ -107,11 +83,7 @@ const fetchCovidNews = async () =>{
       "apiKey=4c73c5f5fb284b3e8c5d75bcd2674dbf&"
       +"language=en";
 
-<<<<<<< HEAD
-  
 
-=======
->>>>>>> 6fae10467e5eec293a4f10bbbe702a4373eea9c1
 try{
     console.log("shaaki");
     const data= await axios.get(Url);
@@ -125,7 +97,7 @@ console.log(error);
 }
 
 
-
+// Fetch PCR Details
 const fetchPCRLocations = async () =>{
     let URL="https://www.hpb.health.gov.lk/api/get-current-statistical";
     try{
@@ -151,7 +123,7 @@ router.get('/covidPCRLocations', async (req, res) =>{
     
 })
 
-<<<<<<< HEAD
+
 /**
  * POST /covid/covidCountry
  * Purpose: Country based covid details
@@ -161,12 +133,12 @@ router.post('/covidCountry', async (req, res) =>{
     let data = await fetchData("India");
     console.log(data);
     res.status(200).send({data})  
-=======
+
 router.post('/covidCountry/:location', async (req, res) =>{
     let body = req.params.location;
     let data = await fetchData(body);
     res.status(200).send(data)  
->>>>>>> 6fae10467e5eec293a4f10bbbe702a4373eea9c1
+
 })
 
 /**
@@ -193,15 +165,13 @@ router.get('/covidNewsFeeds', async (req, res) =>{
     
 })
 
-<<<<<<< HEAD
+
 /**
  * POST /covid/covidLocation/:location
  * Purpose: Get Geo Cording
  */
-router.post('/covidLocation/:location', async (req, res) =>{
-=======
 router.post('/covidPCRLocation/:location', async (req, res) =>{
->>>>>>> 6fae10467e5eec293a4f10bbbe702a4373eea9c1
+
     let body = req.params.location;
     console.log(body)
     geoCoder.geocode(body)
@@ -215,4 +185,5 @@ router.post('/covidPCRLocation/:location', async (req, res) =>{
    
     
 })
+
 module.exports=router;

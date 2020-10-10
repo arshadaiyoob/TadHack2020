@@ -18,6 +18,7 @@ import Home from './src/modules/dashboards/Home/Home'
 import News from './src/modules/dashboards/News/News';
 import Stats from './src/modules/dashboards/Stats/Stats';
 import Pcr from './src/modules/PCR/Pcr';
+import FakeNews from './src/modules/FakeNews/FakeNews';
 
 
 interface Props {}
@@ -27,7 +28,7 @@ export default class App extends React.Component<Props, State>{
   render(){
     return(
       <View style={styles.container}>
-        <Pcr/>
+        <FakeNews/>
       </View>
     );
   }

@@ -14,7 +14,6 @@ app.use(middleware+"user/", userRoute);
 sms.runServer();
 
 app.use(middleware+"covid/", covidRoute);
-
 app.listen(4000, () =>{
     console.log("Server is running on port 4000");
 })

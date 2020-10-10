@@ -114,9 +114,9 @@ router.get('/covidPCRLocations', async (req, res) =>{
     res.status(200).send({hospital_datas})  
     
 })
-router.post('/covidCountry/:country', async (req, res) =>{
+router.post('/covidCountry', async (req, res) =>{
     let body = req.params.country;
-    let data = await fetchData(body);
+    let data = await fetchData("India");
     console.log(data);
     res.status(200).send({data})  
 })

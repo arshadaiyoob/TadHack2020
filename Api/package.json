@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@avaya/cpaas": "^0.9.1",
     "axios": "^0.20.0",
     "bcrypt": "^5.0.0",
     "bluebird": "^3.7.2",
@@ -17,6 +18,8 @@
     "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "ideamart.js": "^0.3.1",
+    "localStorage": "^1.0.4",
     "lodash": "^4.17.20",
     "mongoose": "^5.10.8",
     "node-geocoder": "^3.27.0"

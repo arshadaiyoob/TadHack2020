@@ -16,16 +16,22 @@
     "@react-native-community/segmented-control": "^2.1.2",
     "@react-native-community/slider": "^3.0.3",
     "@react-native-community/viewpager": "^4.1.6",
+<<<<<<< HEAD
     "@react-navigation/bottom-tabs": "^5.9.2",
     "@react-navigation/drawer": "^5.9.3",
     "@react-navigation/native": "^5.7.6",
     "@react-navigation/stack": "^5.9.3",
+=======
+    "axios": "^0.20.0",
+>>>>>>> 671b24f6bcf1a5261015dedc7ab900fa00644150
     "expo": "^39.0.3",
     "expo-status-bar": "~1.0.2",
     "lottie-react-native": "^3.5.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
+    "react-native-collapse-view": "^1.0.0",
+    "react-native-collapsible": "^1.5.3",
     "react-native-confirmation-code-input": "^1.0.4",
     "react-native-elements": "^2.3.2",
     "react-native-extended-stylesheet": "^0.12.0",

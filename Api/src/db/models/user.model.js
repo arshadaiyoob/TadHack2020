@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const _ = require('lodash');
 const dotenv = require('dotenv');
-const crypto = require('crypto');
+const lStorage = require('localStorage');
 const bcrypt = require('bcrypt');
 
 dotenv.config();
@@ -72,7 +72,7 @@ UserSchema.statics.findByCredentials = function(phone, password){
     let user = this;
     return user.findOne({ phone }).then((usr) =>{
         if(!usr) return Promise.reject();
-        
+        //  if user not null send a promise and resolve user with phone and password
         return new Promise((resolve, reject) =>{
             bcrypt.compare(password, usr.password, (err, res) =>{
                 if(res) resolve(usr);
@@ -84,6 +84,29 @@ UserSchema.statics.findByCredentials = function(phone, password){
     });
 }
 
+UserSchema.statics.genOTP = function (phone){
+    return new Promise((resolve, reject) =>{
+        // generate a random 6 digit number 
+        let code = Math.floor(100000 + Math.random() * 900000);
+        lStorage.setItem(code, phone)
+        // return the otp generated 6 digit code
+        return resolve(code);
+    });
+}
+
+UserSchema.statics.verifyOTP = function(value) {
+    let code = lStorage.getItem(value);
+    if (code != null){
+        // if otp code is not null remove it from local storage 
+        lStorage.removeItem(value);
+        // send the retrieved code from Local Storage 
+        return code;
+    } else {
+        // if OTP not valid send a boolean
+        return false;
+    }
+
+}
 const User = mongoose.model('User', UserSchema);
 module.exports = {User};
 

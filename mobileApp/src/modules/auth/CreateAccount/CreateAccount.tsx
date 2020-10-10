@@ -9,12 +9,18 @@ import styles from './CreateAccount.styles';
 import TextField from '../../../component/Textfield/TextField';
 import Modal from 'react-native-modal';
 import {Button} from 'react-native-elements'
+import Password from '../Password/Password';
 
-
+import { createAccount } from '../../../services/userapi';
 
 const CreateAccount =()=>{
    const fadeAnim=new Animated.Value(0);
-   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
+  const [password, setPassword] = useState("");
+
    const closeModal =()=>{
        setModalVisible(false);
    }
@@ -61,15 +67,22 @@ const CreateAccount =()=>{
       </TouchableOpacity>
                   <View style={styles.textStyle}>
                   <Text style={styles.text}>FIRST NAME</Text>
-                  <TextField   placeholder="Enter your first name"/>
+                    < TextField
+                    onChangeText={value => setFirstName(value)}
+                    placeholder = "Enter your first name" />
                   </View>
                   <View style={styles.textInput}>
                   <Text style={styles.text}>LAST NAME</Text>
-                  <TextField  placeholder="Enter you last name" />
+                    < TextField
+                    onChangeText={value => setLastName(value)}
+
+placeholder = "Enter you last name" />
                   </View>
                   <View style={styles.textInput}>
                   <Text style={styles.text}>PASSWORD</Text>
-                  <TextField  placeholder="Enter password"  secureTextEntry />
+  < TextField
+  onChangeText={value => setPassword(value)}
+placeholder = "Enter password"  secureTextEntry />
                   </View> 
                   <Modal isVisible={modalVisible} onBackdropPress={closeModal}>
           <View style={styles.modal}>
@@ -86,7 +99,7 @@ const CreateAccount =()=>{
           </View>
         </Modal> 
         <View style={styles.btnContainer}>
-        <Button title="CONTINUE"  buttonStyle={styles.buttonStyle}/></View> 
+        <Button title="CONTINUE" onPress={()=>CreateAccount(firstname,lastname,password)} buttonStyle={styles.buttonStyle}/></View> 
               </ScrollView>
          
         </KeyboardAvoidingView>
@@ -97,5 +110,17 @@ const CreateAccount =()=>{
   
 };
 
+createAccountMethod = (firstname,lastname,password) => {
+  let obj = {
+    firstname: firstname,
+    lastname: lastname,
+    password: password,
+    phoneno: "",
+    country:""
+  }
+
+  let data= createAccount(obj);
+
+}
 export default CreateAccount;
 

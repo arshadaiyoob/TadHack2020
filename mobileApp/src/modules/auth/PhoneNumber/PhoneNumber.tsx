@@ -12,6 +12,7 @@ import { Button } from 'react-native-elements';
 import { generateOTP } from '../../../services/userapi';
 
 let phoneNumberInput = "";
+
 const PhoneNumber = () => {
 
   const fadeAnim = new Animated.Value(0);
@@ -82,7 +83,7 @@ onChangeFormattedText = {(text) => {
 />
   < /View>
   < View style = { styles.btnContainer } >
-    <Button title="NEXT" onPress = {()=> generateOTP(phoneNumberInput) } buttonStyle = { styles.buttonStyle } />
+    <Button title="NEXT" onPress = {()=> validatePhoneNo(phoneNumberInput) } buttonStyle = { styles.buttonStyle } />
       < /View> 
       < /ScrollView>
 
@@ -94,5 +95,15 @@ onChangeFormattedText = {(text) => {
   
 };
 
+validatePhoneNo = (phoneNo) => {
+  let data = generateOTP(phoneNo);
+  // if (data.status === "success") {
+  //send props phone no
+  //   this.props.navigation.navigate();
+  // }
+  else {
+    //put toast message here
+  }
+}
 export default PhoneNumber;
 

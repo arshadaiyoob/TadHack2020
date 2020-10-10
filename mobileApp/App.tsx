@@ -20,20 +20,20 @@ import News from './src/modules/dashboards/News/News';
 import Stats from './src/modules/dashboards/Stats/Stats';
 
 
-interface Props {}
-interface State {}
+interface Props { }
+interface State { }
 
 export default class App extends React.Component<Props, State>{
-  render(){
-    return(
-      <View style={styles.container}>
-        <PhoneNumber/>
-      </View>
+  render() {
+    return (
+      <View style= { styles.container } >
+      <AccessList/>
+      < /View>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
+    flex: 1,
   },
 });

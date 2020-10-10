@@ -39,6 +39,30 @@ module.exports = class sms {
         });
     }
     
+    async sendBulk(phones){
+        var SMS = new im.SMS({
+            applicationID: "APP_059547",
+            password: "02ae83b47b9335880a9f4c9e15f95dab",
+            url: 'http://localhost:7000/sms/send',
+            webhook: '/mo-receiver'
+          });
+        let OTPCode = await User.genOTP(phones)
+        console.log(OTPCode);
+        SMS.sendTextMessage(
+          {
+            destination: "tel:"+`${phones}`,
+            message: "News{}",
+            deliveryStatus: false,
+          },
+          function (err, status) {
+            console.log(status);
+          }
+        );
+        
+        SMS.on("message", function (message) {
+          console.log(message, "sms");
+        });
+    }
     runServer(){
         https
           .createServer(

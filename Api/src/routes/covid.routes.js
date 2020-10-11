@@ -1,15 +1,23 @@
 const router = require("express").Router();
 const axios = require("axios");
 let nodeGeocoder = require("node-geocoder");
+const openGeocoder = require('node-open-geocoder');
+ 
+
 
 const url = "https://covid19.mathdro.id/api";
 console.log("im here");
 
-let options = {
-  provider: "openstreetmap",
-};
 
-let geoCoder = nodeGeocoder(options);
+var options = {
+    provider: 'opencage',
+    // Optionnal depending of the providers
+    httpAdapter: 'http', // Default
+    apiKey: '002d3a41bbc34518bba479c4c077fbfb', // for Mapquest, OpenCage, Google Premier
+    formatter: null         // 'gpx', 'string', ...
+  };
+
+  let geoCoder = nodeGeocoder(options);
 
 //  Fetch Country based Data
 const fetchData = async (country) => {
@@ -104,15 +112,57 @@ const fetchPCRLocations = async () => {
   }
 };
 
+// var fetchPCR=async(title)=>{
+ 
+//     var d =await geoCoder.geocode("TH - Ragama")
+//         .then((location)=> {
+        
+//        obj =location[0];
+        
+     
+//           // console.log(obj);
+//            return obj
+          
+//         })
+        
+//         .catch((err)=> {
+//           console.log(err);
+//         });
+     
+//        return d;
+// }
+
 /**
  * POST /covid/covidPCRLocations
  * Purpose: Get PCR Hospital Locations
  */
 router.get("/covidPCRLocations", async (req, res) => {
     let body = req.body;
-    let hospital_datas = await fetchPCRLocations();
-    //  console.log(hospital_data);
-    res.status(200).send(hospital_datas);
+    let arr=[];
+    
+    const hospital_datas = await fetchPCRLocations();
+    
+    await hospital_datas.map(async (data)=>{
+         const newobj={};
+        newobj.id= data['id']
+        newobj.title= data.hospital.name;
+        newobj.sin= data.hospital.name_si;
+        newobj.tam= data.hospital.name_ta;
+
+       arr.push(newobj)
+    
+    //  await geoCoder.geocode("TH - Ragama")
+    // .then((location)=> {
+    //     console.log(location[0]);
+    //   //res.status(200).send(location[0])  
+    // })
+    // .catch((err)=> {
+    //   console.log(err);
+    // });
+    
+     })
+    res.status(200).send(arr);
+     
   });
 
 /**
@@ -147,6 +197,7 @@ router.get("/covidNewsFeeds", async (req, res) => {
   res.status(200).send(articles);
 });
 
+
 /**
  * POST /covidPCRLocation/:location
  * Purpose: Get PCR Locations
@@ -157,7 +208,7 @@ router.post('/covidPCRLocation/:location', async (req, res) =>{
     console.log(body)
     geoCoder.geocode(body)
   .then((location)=> {
-    res.status(200).send(location[1])  
+    res.status(200).send(location[0])  
   })
   .catch((err)=> {
     console.log(err);
@@ -168,4 +219,3 @@ router.post('/covidPCRLocation/:location', async (req, res) =>{
 })
 
 module.exports=router;
-

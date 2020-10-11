@@ -1,5 +1,3 @@
-
-
 const router = require('express').Router();
 const { User } = require('../db/models');
 const api = require('../api/sms');
@@ -65,5 +63,19 @@ router.post('/login', async(req, res) =>{
             return res.status(200).send(user.toJson());
         })
 })
+
+router.get('/getUser', async(req, res) =>{
+    User.find()
+    .then(user => res.json(user))
+    .catch(err => res.status(400).json('Error: ' + err));
+})
+
+router.get('/getUserById/:id', async(req, res) =>{
+    let id=req.params.id;
+    User.findById(id)
+    .then(user => res.json(user))
+    .catch(err => res.status(400).json('Error: ' + err));
+})
+
 
 module.exports = router;

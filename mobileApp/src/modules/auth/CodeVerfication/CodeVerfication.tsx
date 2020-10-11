@@ -1,6 +1,5 @@
-
 import arrow from '../../../../assets/back.png';
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import { Text, View,StatusBar,Image,Animated, TouchableOpacity, KeyboardAvoidingView,
   Platform,ScrollView } from 'react-native';
 import styles from './CodeVerification.styles';
@@ -8,14 +7,28 @@ import TextField from '../../../component/Textfield/TextField';
 import PhoneInput from 'react-native-phone-number-input';
 import CodeInputField from '../../../component/CodeInputField/CodeInputField';
 import {Button} from 'react-native-elements';
+// import { validateOTP } from '../../../services/userapi';
 
 
-const PhoneNumber =()=>{
+const CodeVerification =(props)=>{
+
    const fadeAnim=new Animated.Value(0);
    const handleOnFulfill = (code: string): void => {
-   
+    //  validateOTP(code);
+     
+     let obj = {
+      phone: phoneNo,
+      otp:code
+    }
+    await axios.post(BASE_URL +SUB_URL+ "validateOTP",obj).then(res => {
+      if (res.status === 200) {
+        // props.navigation.navigate("");
+        // return data;
+      }
+     }).catch(err => { return err.data; })
   };
-  
+  const [value, setValue] = useState("");
+
  
     useEffect(()=>{
         Animated.timing(
@@ -65,7 +78,7 @@ const PhoneNumber =()=>{
                   
               </View>
               <View style={styles.btnContainer}>
-        <Button title="CONTINUE"  buttonStyle={styles.buttonStyle}/></View> 
+        <Button title="CONTINUE" onPress={()=>{props.navigation.navigate("CreateAccount")}} buttonStyle={styles.buttonStyle}/></View> 
               </ScrollView>
          
         </KeyboardAvoidingView>
@@ -76,5 +89,4 @@ const PhoneNumber =()=>{
   
 };
 
-export default PhoneNumber;
-
+export default CodeVerification;

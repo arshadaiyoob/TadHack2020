@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { Icon, SearchBar, TabBar, Card, WhiteSpace, WingBlank } from '@ant-design/react-native';
-import Map from './Map';
+import Map from './Map/Map';
 import BottomNavigator from './BottomNavigator';
 
 export default class Dashboard extends React.Component {

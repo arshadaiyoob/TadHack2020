@@ -12,10 +12,8 @@ import { Button } from 'react-native-elements';
 import { generateOTP } from '../../../services/userapi';
 
 let phoneNumberInput = "";
-const PhoneNumber = () => {
-
-  const fadeAnim = new Animated.Value(0);
-
+const PhoneNumber =(props)=>{
+   const fadeAnim=new Animated.Value(0);
   const [value, setValue] = useState("");
   const [formattedValue, setFormattedValue] = useState("");
 
@@ -40,11 +38,10 @@ const PhoneNumber = () => {
       <TouchableOpacity>
       <Image source={ arrow } style = { styles.imageStyle } />
         </TouchableOpacity>
-
-        < Text style = { styles.topText } > WELCOME < /Text>
-          < View />
+        <Text style = { styles.topText }> WELCOME </Text>
+          <View/>
           </View>
-          < Animated.View style = {
+          <Animated.View style = {
             [styles.bottomContainer, {
               transform: [{
                 translateY: fadeAnim.interpolate({
@@ -60,9 +57,9 @@ const PhoneNumber = () => {
               style={ styles.keyboardAwareContentContainer }
   showsVerticalScrollIndicator = { false} >
     <View style={ styles.mobileStyle }>
-      <Text style={ styles.text }> MOBILE < /Text>
+      <Text style={ styles.text }> MOBILE </Text>
 
-        < PhoneInput
+        <PhoneInput
   defaultCode = "US"
   withDarkTheme
   placeholder = 'Enter your mobile #'
@@ -71,28 +68,33 @@ const PhoneNumber = () => {
   onChangeText = {(text) => {
   // setValue(text);
   phoneNumberInput = text;
-
-}}
+  }}
 onChangeFormattedText = {(text) => {
   // setFormattedValue(text);
   console.log(text)
 
-}}
+}}/>
+  </View>
+  <View style = { styles.btnContainer } >
+    <Button title="NEXT" onPress = {()=> validatePhoneNo(phoneNumberInput) } buttonStyle = { styles.buttonStyle } />
+      </View> 
+      </ScrollView>
 
-/>
-  < /View>
-  < View style = { styles.btnContainer } >
-    <Button title="NEXT" onPress = {()=> generateOTP(phoneNumberInput) } buttonStyle = { styles.buttonStyle } />
-      < /View> 
-      < /ScrollView>
-
-      < /KeyboardAvoidingView>
-      < /Animated.View>
-
-      < /View>
+      </KeyboardAvoidingView>
+      </Animated.View>
+      </View>
     );
   
 };
 
+validatePhoneNo = (phoneNo) => {
+  let data = generateOTP(phoneNo);
+  // if (data.status === "success") {
+  //send props phone no
+  //   this.props.navigation.navigate();
+  // }
+  // else {
+    //put toast message here
+  // }
+}
 export default PhoneNumber;
-

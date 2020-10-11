@@ -11,7 +11,7 @@ import color from '../../../styles/color';
 interface Props {}
 interface State {}
 
-const Landing =()=>{
+const Landing =(props)=>{
    const fadeAnim=new Animated.Value(0);
 
   
@@ -52,6 +52,7 @@ const Landing =()=>{
                   <Text style={styles.mobileText}>MOBILE</Text>
                   <TouchableOpacity onPress={()=>{
                     console.log('pressed')
+                    props.navigation.navigate("PhoneNumber");
                   }}>
                        <PhoneInput
             defaultCode="US"

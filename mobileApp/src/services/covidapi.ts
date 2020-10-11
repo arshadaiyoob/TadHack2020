@@ -1,27 +1,42 @@
 import { BASE_URL } from '../../config';
 import axios from 'axios';
+const SUB_URL = "covid/"
 
-export const async getCovidDataByCountry = (country) => {
-  await axios.post(BASE_URL + `covidCountry/${country}`).then(res => {
+let globalData;
+
+let  getCovidDataByCountry = async (country) => {
+  await axios.post(BASE_URL + SUB_URL+ `covidCountry/${country}`).then(res => {
     if (res.status === 200) {
       let data = res.data;
+      // console.log(data)
       return data;
-     }
-   }).catch(err=>{})
+    }
+  }).catch(err => { })
 }
 
-getCovidDataGlobal = () => {
-  axios.get(BASE_URL+`covidGlobal`).then(res=>{}).catch(err=>{})
+let getCovidDataGlobal = async () => {
+  await axios.get(BASE_URL +SUB_URL+ `covidGlobal`).then(res => { 
+    if (res.status === 200) {
+      let data = res.data;
+      globalData = data;
+      // console.log(data,"ddd");
+      return globalData;
+    }
+  }).catch(err => { })
 }
 
-getNewsData = () => {
-  axios.get(BASE_URL+`covidNewsFeeds`).then(res=>{}).catch(err=>{})
-}
+// let getNewsData = async() => {
+//   await axios.get(BASE_URL + `covidNewsFeeds`).then(res => { }).catch(err => { })
+// }
 
-getPCRLocation = () => {
-  axios.get(BASE_URL+`covidPCRLocations`).then(res=>{}).catch(err=>{})
-}
+// let getPCRLocation = async() => {
+//   await axios.get(BASE_URL + `covidPCRLocations`).then(res => { }).catch(err => { })
+// }
 
-getHospitalData = (location) => {
-  axios.post(BASE_URL+`covidLocation/${location}`)
-}
+// let getHospitalData = async(location) => {
+//   await axios.post(BASE_URL + `covidLocation/${location}`).then(res => {
+    
+//   })
+// }
+
+module.exports={getCovidDataByCountry,getCovidDataGlobal,globalData}

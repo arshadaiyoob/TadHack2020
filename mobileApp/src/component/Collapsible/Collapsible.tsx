@@ -8,7 +8,7 @@ import styles from './Collapsible.styles';
 
 interface CustomProps {
   onPress?: () => {};
-  pcrLocation?: any;
+  pcrLocation: any;
 }
 
 const Collapsible: React.FC<CustomProps> = props => {
@@ -18,7 +18,7 @@ const Collapsible: React.FC<CustomProps> = props => {
   } = props;
 
   const [activeSections, setActiveSections] = useState([]);
-
+console.log(pcrLocation,"sssssffg")
   const SECTIONS = [
     {
       title: 'National Institute of Infections Diseases',
@@ -62,7 +62,7 @@ const Collapsible: React.FC<CustomProps> = props => {
     setActiveSections(activeSections);
   };
 
-
+console.log(pcrLocation)
   return (
     <Accordion
       sections={SECTIONS}
